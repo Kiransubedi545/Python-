@@ -4,21 +4,21 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from pandas.plotting import parallel_coordinates
 
-# Example structure – fill with your actual metrics from each model
+# Metrics from each model
 results = [
-    {"Model": "Linear Regression",       "R2": 0.75, "RMSE": 6.3, "MAE": 5.1, "MAPE": 12.3, "Accuracy": 0.81, "Precision": 0.83, "Recall": 0.78, "F1": 0.80},
-    {"Model": "Ridge Regression",        "R2": 0.76, "RMSE": 6.1, "MAE": 5.0, "MAPE": 12.0, "Accuracy": 0.82, "Precision": 0.84, "Recall": 0.79, "F1": 0.81},
-    {"Model": "Decision Tree",           "R2": 0.85, "RMSE": 4.8, "MAE": 3.6, "MAPE": 9.2,  "Accuracy": 0.88, "Precision": 0.89, "Recall": 0.87, "F1": 0.88},
-    {"Model": "Random Forest",           "R2": 0.91, "RMSE": 3.9, "MAE": 2.9, "MAPE": 7.0,  "Accuracy": 0.91, "Precision": 0.93, "Recall": 0.90, "F1": 0.91},
-    {"Model": "SVR",                     "R2": 0.78, "RMSE": 5.9, "MAE": 4.7, "MAPE": 11.5, "Accuracy": 0.80, "Precision": 0.81, "Recall": 0.78, "F1": 0.79},
-    {"Model": "XGBoost",                 "R2": 0.93, "RMSE": 3.5, "MAE": 2.7, "MAPE": 6.2,  "Accuracy": 0.93, "Precision": 0.94, "Recall": 0.92, "F1": 0.93},
-    {"Model": "KNN",                     "R2": 0.74, "RMSE": 6.5, "MAE": 5.3, "MAPE": 13.1, "Accuracy": 0.78, "Precision": 0.79, "Recall": 0.76, "F1": 0.77},
-    {"Model": "MLP Regressor",           "R2": 0.88, "RMSE": 4.2, "MAE": 3.1, "MAPE": 8.0,  "Accuracy": 0.89, "Precision": 0.90, "Recall": 0.88, "F1": 0.89},
-    {"Model": "LightGBM",                "R2": 0.92, "RMSE": 3.7, "MAE": 2.8, "MAPE": 6.5,  "Accuracy": 0.92, "Precision": 0.93, "Recall": 0.91, "F1": 0.92},
-    {"Model": "Gaussian Process",        "R2": 0.79, "RMSE": 5.7, "MAE": 4.5, "MAPE": 10.8, "Accuracy": 0.83, "Precision": 0.85, "Recall": 0.81, "F1": 0.83},
-    {"Model": "CatBoost",                "R2": 0.93, "RMSE": 3.4, "MAE": 2.6, "MAPE": 6.1,  "Accuracy": 0.94, "Precision": 0.95, "Recall": 0.93, "F1": 0.94},
-    {"Model": "Keras ANN",               "R2": 0.91, "RMSE": 3.8, "MAE": 2.9, "MAPE": 6.8,  "Accuracy": 0.91, "Precision": 0.92, "Recall": 0.90, "F1": 0.91},
-]
+   {"Model": "Linear Regression",       "R2": 0.6276, "RMSE": 9.7965, "MAE": 7.7456, "MAPE": 29.27, "Accuracy": 0.7816, "Precision": 0.7576, "Recall": 0.6329, "F1": 0.6897},
+    {"Model": "Ridge Regression",        "R2": 0.6276, "RMSE": 9.7962, "MAE": 7.752,  "MAPE": 29.34, "Accuracy": 0.7816, "Precision": 0.7576, "Recall": 0.6329, "F1": 0.6897},
+    {"Model": "Decision Tree Regression", "R2": 0.8348, "RMSE": 6.5254, "MAE": 4.2938, "MAPE": 13.33, "Accuracy": 0.8689, "Precision": 0.8514, "Recall": 0.7975, "F1": 0.8235},
+    {"Model": "Random Forest Regression", "R2": 0.8842, "RMSE": 5.4632, "MAE": 3.7341, "MAPE": 12.32, "Accuracy": 0.8981, "Precision": 0.9028, "Recall": 0.8228, "F1": 0.8609},
+    {"Model": "Support Vector Regression", "R2": 0.8727, "RMSE": 5.7276, "MAE": 3.9849, "MAPE": 12.68, "Accuracy": 0.8738, "Precision": 0.8442, "Recall": 0.8228, "F1": 0.8333},
+    {"Model": "XGBoost Regression",       "R2": 0.9041, "RMSE": 4.9698, "MAE": 3.2579, "MAPE": 10.06, "Accuracy": 0.9175, "Precision": 0.9079, "Recall": 0.8734, "F1": 0.8903},
+    {"Model": "KNN Regression",           "R2": 0.7143, "RMSE": 8.5801, "MAE": 6.8005, "MAPE": 23.50, "Accuracy": 0.8204, "Precision": 0.7692, "Recall": 0.7595, "F1": 0.7643},
+    {"Model": "MLP Regression",           "R2": 0.8764, "RMSE": 5.6435, "MAE": 3.9299, "MAPE": 11.80, "Accuracy": 0.9126, "Precision": 0.9296, "Recall": 0.8354, "F1": 0.8800},
+    {"Model": "Light GBM Regression",     "R2": 0.9126, "RMSE": 4.7470, "MAE": 3.2413, "MAPE": 10.03, "Accuracy": 0.9223, "Precision": 0.9091, "Recall": 0.8861, "F1": 0.8974},
+    {"Model": "Gaussian Process Regression", "R2": -4.425, "RMSE": 37.3886, "MAE": 33.3198, "MAPE": 95.18, "Accuracy": 0.6359, "Precision": 1.0000, "Recall": 0.0506, "F1": 0.0964},
+    {"Model": "CatBoost Regression",      "R2": 0.9093, "RMSE": 4.8355, "MAE": 3.6251, "MAPE": 11.67, "Accuracy": 0.9175, "Precision": 0.9189, "Recall": 0.8606, "F1": 0.8889},
+    {"Model": "Keras ANN Regression",     "R2": 0.8522, "RMSE": 6.1723, "MAE": 4.6818, "MAPE": 14.20, "Accuracy": 0.8883, "Precision": 0.8500, "Recall": 0.8608, "F1": 0.8553},
+] 
 
 # Convert to DataFrame
 results_df = pd.DataFrame(results)
